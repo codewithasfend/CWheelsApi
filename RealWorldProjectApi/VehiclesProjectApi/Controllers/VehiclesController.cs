@@ -203,7 +203,7 @@ namespace VehiclesProjectApi.Controllers
                     Description = vehicleModel.Description,
                     CategoryId = vehicleModel.CategoryId,
                     Color = vehicleModel.Color,
-                    Company = vehicleModel.Color,
+                    Company = vehicleModel.Company,
                     Condition = vehicleModel.Condition,
                     DatePosted = vehicleModel.DatePosted,
                     Engine = vehicleModel.Engine,
