@@ -1,26 +1,38 @@
-﻿using System;
-using System.IO;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
 using VehiclesProjectApi.Data;
 using VehiclesProjectApi.Helpers;
 using VehiclesProjectApi.Models;
 
 namespace VehiclesProjectApi.Controllers
 {
+    /// <summary>
+    /// Car images.
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ImagesController : ControllerBase
     {
-        private VehiclesProjectDbContext _dbContext;
+        private readonly VehiclesProjectDbContext _dbContext;
+
+        /// <summary>
+        /// Car Images CTOR
+        /// </summary>
+        /// <param name="dbContext"></param>
         public ImagesController(VehiclesProjectDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        // POST: api/Images
+        /// <summary>
+        /// POST: api/Images
+        /// </summary>
+        /// <param name="imageModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] ImageModel imageModel)
         {

@@ -1,32 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using AuthenticationPlugin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using VehiclesProjectApi.Data;
 using VehiclesProjectApi.Helpers;
 using VehiclesProjectApi.Models;
-using VehiclesProjectApi.Data;
-using AuthenticationPlugin;
 
 namespace VehiclesProjectApi.Controllers
 {
+    /// <summary>
+    /// User Accounts.
+    /// </summary>
     [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private VehiclesProjectDbContext _dbContext;
-        private IConfiguration _configuration;
+        private readonly VehiclesProjectDbContext _dbContext;
+        private readonly IConfiguration _configuration;
         private readonly AuthService _auth;
 
+        /// <summary>
+        /// AccountsController CTOR.
+        /// </summary>
+        /// <param name="dbContext"></param>
+        /// <param name="configuration"></param>
         public AccountsController(VehiclesProjectDbContext dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
@@ -34,6 +39,11 @@ namespace VehiclesProjectApi.Controllers
             _auth = new AuthService(_configuration);
         }
 
+        /// <summary>
+        /// Register User.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register(User user)
@@ -52,11 +62,16 @@ namespace VehiclesProjectApi.Controllers
             return StatusCode(StatusCodes.Status201Created);
         }
 
+        /// <summary>
+        /// User Login.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(User user)
         {
-            var userEmail =  _dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
+            var userEmail = _dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
             if (userEmail == null) return StatusCode(StatusCodes.Status404NotFound);
             var hashedPassword = userEmail.Password;
             if (!SecurePasswordHasherHelper.Verify(user.Password, hashedPassword)) return Unauthorized();
@@ -80,7 +95,11 @@ namespace VehiclesProjectApi.Controllers
             });
         }
 
-
+        /// <summary>
+        /// Allow user to change their password.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult ChangePassword(ChangePasswordModel model)
         {
@@ -104,7 +123,12 @@ namespace VehiclesProjectApi.Controllers
             _dbContext.SaveChanges();
             return Ok("Your password has been changed");
         }
-        
+
+        /// <summary>
+        /// Allow user to edit their phone number.
+        /// </summary>
+        /// <param name="changePhone"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult EditPhoneNumber([FromForm]ChangePhoneModel changePhone)
         {
@@ -122,7 +146,11 @@ namespace VehiclesProjectApi.Controllers
             return Ok("Phone number has been updated");
         }
 
-
+        /// <summary>
+        /// Allow user to modify their profile.
+        /// </summary>
+        /// <param name="ImageArray"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult EditUserProfile([FromBody]byte[] ImageArray)
         {
@@ -143,6 +171,10 @@ namespace VehiclesProjectApi.Controllers
             return StatusCode(StatusCodes.Status201Created);
         }
 
+        /// <summary>
+        /// User profile image.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult UserProfileImage()
         {
@@ -158,8 +190,5 @@ namespace VehiclesProjectApi.Controllers
                 .SingleOrDefault();
             return Ok(responseResult);
         }
-
-
-
     }
 }

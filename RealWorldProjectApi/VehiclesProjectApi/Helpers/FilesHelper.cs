@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace VehiclesProjectApi.Helpers
 {
-    public class FilesHelper
+    /// <summary>
+    /// FilesHelper: allows user to upload photos of vehicles.
+    /// </summary>
+    public static class FilesHelper
     {
+        /// <summary>
+        /// Gives user feature to upload vehicle photos.
+        /// </summary>
+        /// <param name="memoryStream"></param>
+        /// <param name="folderName"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static bool UploadPhoto(MemoryStream memoryStream, string folderName, string fileName)
         {
             try

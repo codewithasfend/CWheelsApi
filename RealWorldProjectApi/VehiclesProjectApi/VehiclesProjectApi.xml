@@ -4,5 +4,519 @@
         <name>VehiclesProjectApi</name>
     </assembly>
     <members>
+        <member name="T:VehiclesProjectApi.Controllers.AccountsController">
+            <summary>
+            User Accounts.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.#ctor(VehiclesProjectApi.Data.VehiclesProjectDbContext,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            AccountsController CTOR.
+            </summary>
+            <param name="dbContext"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.Register(VehiclesProjectApi.Models.User)">
+            <summary>
+            Register User.
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.Login(VehiclesProjectApi.Models.User)">
+            <summary>
+            User Login.
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.ChangePassword(VehiclesProjectApi.Models.ChangePasswordModel)">
+            <summary>
+            Allow user to change their password.
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.EditPhoneNumber(VehiclesProjectApi.Models.ChangePhoneModel)">
+            <summary>
+            Allow user to edit their phone number.
+            </summary>
+            <param name="changePhone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.EditUserProfile(System.Byte[])">
+            <summary>
+            Allow user to modify their profile.
+            </summary>
+            <param name="ImageArray"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.AccountsController.UserProfileImage">
+            <summary>
+            User profile image.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VehiclesProjectApi.Controllers.CategoriesController">
+            <summary>
+            Car categories.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.CategoriesController.#ctor(VehiclesProjectApi.Data.VehiclesProjectDbContext)">
+            <summary>
+            Categories CTOR.
+            </summary>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.CategoriesController.Get">
+            <summary>
+            Get categories.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.CategoriesController.Post(VehiclesProjectApi.Models.Category)">
+            <summary>
+            Post categories
+            </summary>
+            <param name="categoryModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VehiclesProjectApi.Controllers.ImagesController">
+            <summary>
+            Car images.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ImagesController.#ctor(VehiclesProjectApi.Data.VehiclesProjectDbContext)">
+            <summary>
+            Car Images CTOR
+            </summary>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ImagesController.Post(VehiclesProjectApi.Models.ImageModel)">
+            <summary>
+            POST: api/Images
+            </summary>
+            <param name="imageModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VehiclesProjectApi.Controllers.ValuesController">
+            <summary>
+            Car values.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ValuesController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            GET api/values/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            POST api/values
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT api/values/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE api/values/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:VehiclesProjectApi.Controllers.VehiclesController">
+            <summary>
+            Vehicle Ads.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.#ctor(VehiclesProjectApi.Data.VehiclesProjectDbContext)">
+            <summary>
+            Vehicles CTOR.
+            </summary>
+            <param name="dbContext"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.HotAndNewAds">
+            <summary>
+            GET : api/Vehicles/HotAndNewAds
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.SearchVehicles(System.String)">
+            <summary>
+            GET : api/Vehicles/SearchVehicles?search=BMW
+            </summary>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.GetVehicles(System.Int32)">
+            <summary>
+            GET : api/Vehicles?categoryId=1
+            </summary>
+            <param name="categoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.VehicleDetails(System.Int32)">
+            <summary>
+            GET : api/Vehicles/VehicleDetails?id=1
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.FilterVehicles(System.Int32,System.String,System.String,System.Double)">
+            <summary>
+            GET : api/Vehicles/FilterVehicles?categoryId=1&amp;condition=New&amp;sort=asc&amp;price=20
+            </summary>
+            <param name="categoryId"></param>
+            <param name="condition"></param>
+            <param name="sort"></param>
+            <param name="price"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.Post(VehiclesProjectApi.Models.Vehicle)">
+            <summary>
+            POST: api/Vehicles
+            </summary>
+            <param name="vehicleModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.MyAds">
+            <summary>
+            User's Ads.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT: api/Vehicles/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Controllers.VehiclesController.Delete(System.Int32)">
+            <summary>
+            DELETE: api/ApiWithActions/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:VehiclesProjectApi.Data.VehiclesProjectDbContext">
+            <summary>
+            DBContext for Vehicles Project
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Data.VehiclesProjectDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{VehiclesProjectApi.Data.VehiclesProjectDbContext})">
+            <summary>
+            CTOR.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:VehiclesProjectApi.Data.VehiclesProjectDbContext.Users">
+            <summary>
+            DBSet for Users.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Data.VehiclesProjectDbContext.Vehicles">
+            <summary>
+            DBSet for Vehicles.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Data.VehiclesProjectDbContext.Images">
+            <summary>
+            DBSet for Vehicl Images.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Data.VehiclesProjectDbContext.Categories">
+            <summary>
+            DBSet for Categories.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Helpers.FilesHelper">
+            <summary>
+            FilesHelper: allows user to upload photos of vehicles.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Helpers.FilesHelper.UploadPhoto(System.IO.MemoryStream,System.String,System.String)">
+            <summary>
+            Gives user feature to upload vehicle photos.
+            </summary>
+            <param name="memoryStream"></param>
+            <param name="folderName"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.Category">
+            <summary>
+            Vehicle categories.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Category.Id">
+            <summary>
+            Vehicle ID.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Category.Type">
+            <summary>
+            Vehicle Type.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Category.Vehicles">
+            <summary>
+            Collection of Vehicles.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.ChangePasswordModel">
+            <summary>
+            Gives user ability to change their password.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ChangePasswordModel.OldPassword">
+            <summary>
+            Get user's current password.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ChangePasswordModel.NewPassword">
+            <summary>
+            Get user's new password.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ChangePasswordModel.ConfirmPassword">
+            <summary>
+            Confirm new password change with user.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.ChangePhoneModel">
+            <summary>
+            Give user ability to change phone numbers.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ChangePhoneModel.Number">
+            <summary>
+            User phone number.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.ImageModel">
+            <summary>
+            Vehicl Images.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ImageModel.Id">
+            <summary>
+            Image ID.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ImageModel.ImageUrl">
+            <summary>
+            Image url.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ImageModel.VehicleId">
+            <summary>
+            Vehicle ID.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.ImageModel.ImageArray">
+            <summary>
+            Image array.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.RecoverPasswordModel">
+            <summary>
+            Email to send password recovery info to.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.RecoverPasswordModel.Email">
+            <summary>
+            User email.
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.User">
+            <summary>
+            User info.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Id">
+            <summary>
+            User ID.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Name">
+            <summary>
+            User name: First and Last.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Email">
+            <summary>
+            User email.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Password">
+            <summary>
+            User password.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Phone">
+            <summary>
+            User phone number.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.ImageUrl">
+            <summary>
+            User image.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.User.Vehicles">
+            <summary>
+            User's vehicle(s).
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Models.Vehicle">
+            <summary>
+            Vehicle info.
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Id">
+            <summary>
+            Vehicle ID
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Title">
+            <summary>
+            Vehicle Name
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Description">
+            <summary>
+            Vehicle Description
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Price">
+            <summary>
+            Vehicle Price
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Model">
+            <summary>
+            Vehicle Model
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Engine">
+            <summary>
+            Vehicle Engine Type
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Color">
+            <summary>
+            Vehicle Color
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Company">
+            <summary>
+            Vehicle Brand
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Assembly">
+            <summary>
+            Vehicle Year
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.DatePosted">
+            <summary>
+            Date Posted
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.IsHotAndNew">
+            <summary>
+            Is New?
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.IsFeatured">
+            <summary>
+            Featured?
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Location">
+            <summary>
+            Location of Vehicle 
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Condition">
+            <summary>
+            Vehicle Condition
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.UserId">
+            <summary>
+            User Selling vehicle
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.CategoryId">
+            <summary>
+            Vehicle category
+            </summary>
+        </member>
+        <member name="P:VehiclesProjectApi.Models.Vehicle.Images">
+            <summary>
+            Vehicle Images
+            </summary>
+        </member>
+        <member name="T:VehiclesProjectApi.Program">
+            <summary>
+            Program.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Program.Main(System.String[])">
+            <summary>
+            Main.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Web Host Builder.
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VehiclesProjectApi.Startup">
+            <summary>
+            App Startup.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            CTOR.
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:VehiclesProjectApi.Startup.Configuration">
+            <summary>
+            Configuration.
+            </summary>
+        </member>
+        <member name="M:VehiclesProjectApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:VehiclesProjectApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,VehiclesProjectApi.Data.VehiclesProjectDbContext)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="vehiclesProjectDbContext"></param>
+        </member>
     </members>
 </doc>
